@@ -16,7 +16,7 @@ public class Teacher {
     private String load; //нагрузка
 
     private Set<Timetable> timetables = new HashSet<Timetable>() {};
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "employee")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tablename")
     public Set<Timetable> getTimetables() {
         return timetables;
     }
