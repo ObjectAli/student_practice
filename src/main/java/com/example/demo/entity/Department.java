@@ -1,15 +1,16 @@
 package com.example.demo.entity;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity // This tells Hibernate to make a table out of this class
-@Table(name = "specialty", catalog = "alinorbobaevdb")
-public class Specialty {
+@Table(name = "department", catalog = "alinorbobaevdb")
+public class Department {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String name;
+
+    public Department(){}
 
     public Integer getId() {
         return id;
@@ -28,15 +29,17 @@ public class Specialty {
         this.name = name;
     }
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "specialty")
-    private Set<Department> users;
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinColumn(name = "specialty_id", nullable = false)
 
-    public Set<Department> getDepartment() {
-        return users;
+    private Specialty specialty;
+
+    public Specialty getSpecialty() {
+        return specialty;
     }
 
-    public void setDepartment(Set<Department> users) {
-        this.users = users;
+    public void setSpecialty(Specialty specialty) {
+        this.specialty = specialty;
     }
 
 }
