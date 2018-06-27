@@ -3,7 +3,7 @@ package com.example.demo.entity;
 import javax.persistence.*;
 
 @Entity // This tells Hibernate to make a table out of this class
-@Table(name = "students")
+@Table(name = "students", catalog = "alinorbobaevdb")
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
