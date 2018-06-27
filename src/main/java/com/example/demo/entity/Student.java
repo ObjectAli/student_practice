@@ -11,7 +11,6 @@ public class Student {
     private String name;
     private String lastname;
     private String course;
-    private String specialty;
     private int attendance; //посещаемость
     private int acperformance; //успеваемость
 
@@ -51,16 +50,6 @@ public class Student {
         this.course = course;
     }
 
-    @Column(name = "specialty")
-
-    public String getSpecialty() {
-        return specialty;
-    }
-
-    public void setSpecialty(String specialty) {
-        this.specialty = specialty;
-    }
-
     @Column(name = "attendance")
 
     public int getAttendance() {
@@ -79,5 +68,18 @@ public class Student {
 
     public void setAcperformance(int acperformance) {
         this.acperformance = acperformance;
+    }
+
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinColumn(name = "specialty_id", nullable = false)
+
+    private Specialty specialty;
+
+    public Specialty getSpecialty() {
+        return specialty;
+    }
+
+    public void setSpecialty(Specialty specialty) {
+        this.specialty = specialty;
     }
 }

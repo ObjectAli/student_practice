@@ -1,9 +1,7 @@
 package com.example.demo.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity // This tells Hibernate to make a table out of this  class
 public class Timetable {
@@ -53,5 +51,16 @@ public class Timetable {
 
     public void setSubject(String subject) {
         this.subject = subject;
+    }
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "timetable")
+    private Set<Teacher> teachers;
+
+    public Set<Teacher> getTeachers() {
+        return teachers;
+    }
+
+    public void setTeachers(Set<Teacher> teachers) {
+        this.teachers = teachers;
     }
 }

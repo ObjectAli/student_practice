@@ -58,4 +58,16 @@ public class Teacher {
         this.load = load;
     }
 
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinColumn(name = "timetable_id", nullable = false)
+
+    private Timetable timetable;
+
+    public Timetable getTimetable() {
+        return timetable;
+    }
+
+    public void setTimetable(Timetable timetable) {
+        this.timetable = timetable;
+    }
 }
