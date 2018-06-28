@@ -29,8 +29,8 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
-    public List<Teacher> getByLastName(String lastName) {
-        return teacherRepository.getByLastName(lastName);
+    public Teacher getByLastName(String lastName) {
+        return teacherRepository.getByLastname(lastName);
     }
 
     @Override

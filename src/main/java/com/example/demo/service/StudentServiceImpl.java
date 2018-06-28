@@ -26,7 +26,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public List<Student> getByLastName(String lastName){
+    public Student getByLastName(String lastName){
         return studentRepository.getByLastname(lastName);
     }
 

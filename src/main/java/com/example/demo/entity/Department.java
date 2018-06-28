@@ -55,3 +55,4 @@ public class Department {
         this.faculties = faculties;
     }
 }
+

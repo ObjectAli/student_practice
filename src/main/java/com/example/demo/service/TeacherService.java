@@ -9,7 +9,7 @@ public interface TeacherService {
     Teacher addStudent(Teacher teacher);
     void delete(long id);
     Teacher getById(long id);
-    List<Teacher> getByLastName(String name);
+    Teacher getByLastName(String name);
     Teacher editTeacher(Teacher teacher);
     List<Teacher> getAll();
 }
