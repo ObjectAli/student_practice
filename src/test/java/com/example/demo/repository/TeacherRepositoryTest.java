@@ -1,18 +1,18 @@
 package com.example.demo.repository;
 
 import com.example.demo.DemoApplicationTests;
-import com.example.demo.entity.Student;
+import com.example.demo.entity.Teacher;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 
-public class StudentRepositoryTest extends DemoApplicationTests {
+public class TeacherRepositoryTest extends DemoApplicationTests {
 
-    @Qualifier("studentRepository")
+    @Qualifier("teacherRepository")
     @Autowired
-    private StudentRepository studentRepository;
+    private TeacherRepository studentRepository;
 
     @Test
     public void testSelect(){
@@ -21,15 +21,15 @@ public class StudentRepositoryTest extends DemoApplicationTests {
 
     @Test
     public void testSelectByLastName(){
-        Student student = studentRepository.getByLastname("straniy");
-        Assert.assertEquals("straniy",student.getLastname());
+        Teacher teacher = studentRepository.getByLastname("udivitelniy");
+        Assert.assertEquals("udivitelniy",teacher.getLastname());
     }
 
     @Test
     public void testSelectById(){
-        Long id = new Long(21);
-        Student student = studentRepository.getById(id);
-        Assert.assertEquals(id, student.getId());
+        Long id = new Long(11);
+        Teacher teacher = studentRepository.getById(id);
+        Assert.assertEquals(id, teacher.getId());
 
     }
 }

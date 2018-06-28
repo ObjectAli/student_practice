@@ -17,13 +17,13 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
-    public void delete(long id) {
+    public void delete(Long id) {
         Teacher deleteTeacher = teacherRepository.getOne(id);
         teacherRepository.delete(deleteTeacher);
     }
 
     @Override
-    public Teacher getById(long id) {
+    public Teacher getById(Long id) {
         Teacher getTeacherById = teacherRepository.getOne(id);
         return getTeacherById;
     }

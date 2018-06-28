@@ -7,8 +7,8 @@ import java.util.List;
 public interface TeacherService {
 
     Teacher addStudent(Teacher teacher);
-    void delete(long id);
-    Teacher getById(long id);
+    void delete(Long id);
+    Teacher getById(Long id);
     Teacher getByLastName(String name);
     Teacher editTeacher(Teacher teacher);
     List<Teacher> getAll();

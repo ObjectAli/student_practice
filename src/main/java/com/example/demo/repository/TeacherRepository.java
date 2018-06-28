@@ -9,5 +9,6 @@ public interface TeacherRepository extends JpaRepository<Teacher, Long> {
 
     Teacher getByLastname(String lastname);
 
+    Teacher getById(Long id);
 }
 
