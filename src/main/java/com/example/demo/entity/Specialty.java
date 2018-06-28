@@ -39,4 +39,14 @@ public class Specialty {
         this.users = users;
     }
 
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "specialty")
+    private Set<Student> students;
+
+    public Set<Student> getStudent() {
+        return students;
+    }
+
+    public void setStudents(Set<Student> students) {
+        this.students = students;
+    }
 }
