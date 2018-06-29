@@ -12,4 +12,5 @@ public interface TeacherService {
     Teacher getByLastName(String name);
     Teacher editTeacher(Teacher teacher);
     List<Teacher> getAll();
+
 }

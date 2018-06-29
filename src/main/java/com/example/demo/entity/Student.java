@@ -8,11 +8,32 @@ public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @Column
     private String name;
+
+    @Column
     private String lastname;
+
+    @Column
     private String course;
+
+    @Column
     private int attendance; //посещаемость
+
+    @Column
     private int acperformance; //успеваемость
+
+    public Student(){}
+
+    public Student(Long id, String name, String lastname, String course, int attendance, int acperformance){
+        this.id = id;
+        this.name = name;
+        this.lastname = lastname;
+        this.course = course;
+        this.attendance = attendance;
+        this.acperformance = acperformance;
+    }
 
     public Long getId() {
         return id;
@@ -22,7 +43,6 @@ public class Student {
         this.id = id;
     }
 
-    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -31,7 +51,6 @@ public class Student {
         this.name = name;
     }
 
-    @Column(name = "lastname")
     public String getLastname() {
         return lastname;
     }
@@ -39,8 +58,6 @@ public class Student {
     public void setLastname(String lastname) {
         this.lastname = lastname;
     }
-
-    @Column(name = "course")
 
     public String getCourse() {
         return course;
@@ -50,8 +67,6 @@ public class Student {
         this.course = course;
     }
 
-    @Column(name = "attendance")
-
     public int getAttendance() {
         return attendance;
     }
@@ -59,8 +74,6 @@ public class Student {
     public void setAttendance(int attendance) {
         this.attendance = attendance;
     }
-
-    @Column(name = "acperformance")
 
     public int getAcperformance() {
         return acperformance;
@@ -70,8 +83,9 @@ public class Student {
         this.acperformance = acperformance;
     }
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinColumn(name = "specialty_id", nullable = false)
+    //@ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @ManyToOne
+    @JoinColumn(name = "specialty_id")
 
     private Specialty specialty;
 
@@ -79,7 +93,4 @@ public class Student {
         return specialty;
     }
 
-    public void setSpecialty(Specialty specialty) {
-        this.specialty = specialty;
-    }
 }

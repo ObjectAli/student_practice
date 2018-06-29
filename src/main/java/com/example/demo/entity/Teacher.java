@@ -8,12 +8,39 @@ public class Teacher {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String name;
-    private String lastname;
-    private String department;
-    private String load;
 
     @Column
+    private String name;
+
+    @Column
+    private String lastname;
+
+    @Column
+    private String department;
+
+    @Column
+    private String post;
+
+    @Column
+    private String load;
+
+    @ManyToOne
+    @JoinColumn(name = "timetable_id", nullable = false)
+
+    private Timetable timetable;
+
+    public Teacher() {
+    }
+
+    public Teacher(Long id, String name, String lastname, String department, String post, String load) {
+        this.id = id;
+        this.name = name;
+        this.lastname = lastname;
+        this.department = department;
+        this.post = post;
+        this.load = load;
+    }
+
     public Long getId() {
         return id;
     }
@@ -22,7 +49,6 @@ public class Teacher {
         this.id = id;
     }
 
-    @Column
     public String getName() {
         return name;
     }
@@ -31,7 +57,6 @@ public class Teacher {
         this.name = name;
     }
 
-    @Column
     public String getLastname() {
         return lastname;
     }
@@ -40,7 +65,6 @@ public class Teacher {
         this.lastname = lastname;
     }
 
-    @Column
     public String getDepartment() {
         return department;
     }
@@ -49,7 +73,14 @@ public class Teacher {
         this.department = department;
     }
 
-    @Column
+    public String getPost() {
+        return post;
+    }
+
+    public void setPost(String post) {
+        this.post = post;
+    }
+
     public String getLoad() {
         return load;
     }
@@ -57,11 +88,6 @@ public class Teacher {
     public void setLoad(String load) {
         this.load = load;
     }
-
-    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinColumn(name = "timetable_id", nullable = false)
-
-    private Timetable timetable;
 
     public Timetable getTimetable() {
         return timetable;

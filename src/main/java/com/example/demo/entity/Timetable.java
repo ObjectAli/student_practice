@@ -8,13 +8,28 @@ public class Timetable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
+    @Column
     private int timestart;
+
+    @Column
     private int timeend;
+
+    @Column
     private String auditoryHall;
+
+    @Column
     private String subject;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "timetable")
+    private Set<Teacher> teachers;
 
     public Integer getId() {
         return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public int getTimestart() {
@@ -33,10 +48,6 @@ public class Timetable {
         return subject;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public void setTimestart(int timestart) {
         this.timestart = timestart;
     }
@@ -53,14 +64,8 @@ public class Timetable {
         this.subject = subject;
     }
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "timetable")
-    private Set<Teacher> teachers;
-
     public Set<Teacher> getTeachers() {
         return teachers;
     }
 
-    public void setTeachers(Set<Teacher> teachers) {
-        this.teachers = teachers;
-    }
 }

@@ -1,6 +1,7 @@
 package com.example.demo.entity;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity // This tells Hibernate to make a table out of this class
@@ -9,7 +10,13 @@ public class Specialty {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
+    @Column
     private String name;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "specialty")
+    private List<Student> students;
+
 
     public Integer getId() {
         return id;
@@ -19,7 +26,6 @@ public class Specialty {
         this.id = id;
     }
 
-    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -31,22 +37,8 @@ public class Specialty {
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "specialty")
     private Set<Department> users;
 
-    public Set<Department> getDepartment() {
-        return users;
-    }
-
     public void setDepartment(Set<Department> users) {
         this.users = users;
     }
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "specialty")
-    private Set<Student> students;
-
-    public Set<Student> getStudent() {
-        return students;
-    }
-
-    public void setStudents(Set<Student> students) {
-        this.students = students;
-    }
 }

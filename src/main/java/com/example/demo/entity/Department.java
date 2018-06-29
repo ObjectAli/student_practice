@@ -9,6 +9,8 @@ public class Department {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
+    @Column
     private String name;
 
     public Department() {
@@ -22,7 +24,6 @@ public class Department {
         this.id = id;
     }
 
-    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -31,7 +32,7 @@ public class Department {
         this.name = name;
     }
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @ManyToOne
     @JoinColumn(name = "specialty_id", nullable = false)
 
     private Specialty specialty;
@@ -40,19 +41,11 @@ public class Department {
         return specialty;
     }
 
-    public void setSpecialty(Specialty specialty) {
-        this.specialty = specialty;
-    }
-
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "department")
     private Set<Faculty> faculties;
 
     public Set<Faculty> getFaculties() {
         return faculties;
-    }
-
-    public void setFaculties(Set<Faculty> faculties) {
-        this.faculties = faculties;
     }
 }
 
