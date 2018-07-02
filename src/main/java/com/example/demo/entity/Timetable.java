@@ -1,7 +1,7 @@
 package com.example.demo.entity;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.List;
 
 @Entity // This tells Hibernate to make a table out of this  class
 public class Timetable {
@@ -22,7 +22,7 @@ public class Timetable {
     private String subject;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "timetable")
-    private Set<Teacher> teachers;
+    private List<Teacher> teachers;
 
     public Integer getId() {
         return id;
@@ -62,10 +62,6 @@ public class Timetable {
 
     public void setSubject(String subject) {
         this.subject = subject;
-    }
-
-    public Set<Teacher> getTeachers() {
-        return teachers;
     }
 
 }

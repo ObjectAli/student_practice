@@ -41,4 +41,10 @@ public class Specialty {
         this.users = users;
     }
 
+    public Specialty() {
+    }
+
+    public Specialty(String name) {
+        this.name = name;
+    }
 }
