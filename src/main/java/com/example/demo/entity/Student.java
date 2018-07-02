@@ -16,7 +16,7 @@ public class Student {
     private String lastname;
 
     @Column
-    private String course;
+    private int course;
 
     @Column
     private int attendance; //посещаемость
@@ -24,15 +24,35 @@ public class Student {
     @Column
     private int acperformance; //успеваемость
 
-    public Student(){}
+    @ManyToOne
+    @JoinColumn(name = "specialty_id")
 
-    public Student(Long id, String name, String lastname, String course, int attendance, int acperformance){
+    private Specialty specialty;
+
+    public Student() {
+    }
+
+    public Student(Long id, String name, String lastname, int course, int attendance, int acperformance, Specialty specialty) {
         this.id = id;
         this.name = name;
         this.lastname = lastname;
         this.course = course;
         this.attendance = attendance;
         this.acperformance = acperformance;
+        this.setSpecialty(specialty);
+    }
+
+    public Student(Long id, String name, String lastname, Specialty specialty) {
+        this.id = id;
+        this.name = name;
+        this.lastname = lastname;
+        this.specialty = specialty;
+    }
+
+    public Student(Long id, String name, String lastname) {
+        this.id = id;
+        this.name = name;
+        this.lastname = lastname;
     }
 
     public Long getId() {
@@ -59,11 +79,11 @@ public class Student {
         this.lastname = lastname;
     }
 
-    public String getCourse() {
+    public int getCourse() {
         return course;
     }
 
-    public void setCourse(String course) {
+    public void setCourse(int course) {
         this.course = course;
     }
 
@@ -83,14 +103,11 @@ public class Student {
         this.acperformance = acperformance;
     }
 
-    //@ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @ManyToOne
-    @JoinColumn(name = "specialty_id")
-
-    private Specialty specialty;
-
     public Specialty getSpecialty() {
         return specialty;
     }
 
+    public void setSpecialty(Specialty specialty) {
+        this.specialty = specialty;
+    }
 }

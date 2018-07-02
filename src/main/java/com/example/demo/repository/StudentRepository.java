@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 public interface StudentRepository extends JpaRepository<Student, Long> {
 
     @Query("select s from Student s where s.lastname = :lastname")
-    Student getByLastname(@Param("lastname")String lastname);
+    Student getByLastname(@Param("lastname") String lastname);
 
     Student getById(Long id);
 }

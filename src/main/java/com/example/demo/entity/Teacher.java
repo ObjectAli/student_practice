@@ -25,7 +25,7 @@ public class Teacher {
     private String load;
 
     @ManyToOne
-    @JoinColumn(name = "timetable_id", nullable = false)
+    @JoinColumn(name = "timetable_id")
 
     private Timetable timetable;
 
@@ -39,6 +39,12 @@ public class Teacher {
         this.department = department;
         this.post = post;
         this.load = load;
+    }
+
+    public Teacher(Long id, String name, String lastname) {
+        this.id = id;
+        this.name = name;
+        this.lastname = lastname;
     }
 
     public Long getId() {
@@ -93,7 +99,4 @@ public class Teacher {
         return timetable;
     }
 
-    public void setTimetable(Timetable timetable) {
-        this.timetable = timetable;
-    }
 }
