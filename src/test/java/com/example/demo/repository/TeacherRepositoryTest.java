@@ -48,6 +48,6 @@ public class TeacherRepositoryTest extends DemoApplicationTests {
 
     @Test
     public void testUpdate(){
-        teacherService.editTeacher(new Long(2),"test","edit");
+        teacherService.updateTeacher(new Long(2),"test","edit");
     }
 }
