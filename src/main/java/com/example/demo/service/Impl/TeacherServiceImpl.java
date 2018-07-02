@@ -26,7 +26,6 @@ public class TeacherServiceImpl implements TeacherService {
         return teacherRepository.getByLastname(lastName);
     }
 
-
     @Override
     public Teacher addTeacher(Teacher teacher) {
         return teacherRepository.saveAndFlush(teacher);
