@@ -14,7 +14,7 @@ public interface TeacherService {
 
     Teacher getByLastName(String name);
 
-    void editTeacher(Long id, String name, String lastname);
+    Teacher updateTeacher(Teacher teacher);
 
     List<Teacher> getAll();
 }

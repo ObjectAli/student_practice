@@ -40,7 +40,7 @@ public class TeacherRestController {
 
     @PostMapping(path = "/update/{id},{name},{lastname}")
     public void updateTeacher(@PathVariable("id") Long id, @PathVariable("name") String name, @PathVariable("lastname") String lastname) {
-        teacherService.editTeacher(id, name, lastname);
+        teacherService.updateTeacher(id, name, lastname);
     }
 
     @DeleteMapping(path = "/del/{id}")

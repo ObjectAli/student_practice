@@ -4,6 +4,7 @@ import com.example.demo.entity.Teacher;
 import com.example.demo.repository.TeacherRepository;
 import com.example.demo.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -32,11 +33,12 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
-    public void editTeacher(Long id, String name, String lastname) {
-        Teacher teacher = teacherRepository.getOne(id);
-        teacher.setName(name);
-        teacher.setLastname(lastname);
-        teacherRepository.saveAndFlush(teacher);
+    public Teacher updateTeacher(Teacher teacher) {
+        if(!teacherRepository.exists(Example.of(teacher))){
+            return teacherRepository.save(teacher);
+        }else {
+            throw new RuntimeException("Invalid value!");
+        }
     }
 
     @Override

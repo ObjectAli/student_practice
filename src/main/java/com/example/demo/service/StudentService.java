@@ -14,7 +14,7 @@ public interface StudentService {
 
     Student getByLastname(String lastname);
 
-    void editStudent(Long id, String name, String lastname);
+    Student updateStudent(Student student);
 
     List<Student> getAll();
 
