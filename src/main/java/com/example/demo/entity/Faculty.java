@@ -1,6 +1,7 @@
 package com.example.demo.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity // This tells Hibernate to make a table out of this class
 @Table(name = "faculty", catalog = "alinorbobaevdb")
@@ -8,16 +9,19 @@ public class Faculty {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Long id;
 
     @Column
     private String name;
 
-    public Integer getId() {
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "faculty")
+    private List<Department> department;
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -29,13 +33,11 @@ public class Faculty {
         this.name = name;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "department_id", nullable = false)
+    public Faculty(){}
 
-    private Department department;
-
-    public Department getDepartment() {
-        return department;
+    public Faculty(Long id, String name){
+        this.id = id;
+        this.name = name;
     }
 
 }

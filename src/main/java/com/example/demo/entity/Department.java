@@ -1,26 +1,23 @@
 package com.example.demo.entity;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.List;
 
 @Entity // This tells Hibernate to make a table out of this class
 @Table(name = "department", catalog = "alinorbobaevdb")
 public class Department {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Long id;
 
     @Column
     private String name;
 
-    public Department() {
-    }
-
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -33,19 +30,33 @@ public class Department {
     }
 
     @ManyToOne
-    @JoinColumn(name = "specialty_id", nullable = false)
+    @JoinColumn(name = "faculty_id")
+    private Faculty faculty;
 
-    private Specialty specialty;
+    @OneToMany(mappedBy = "department")
+    private List<Teacher> teachers;
 
-    public Specialty getSpecialty() {
-        return specialty;
+    @OneToMany(mappedBy = "department")
+    private List<Specialty> specialty;
+
+    public Faculty getFaculties() {
+        return faculty;
     }
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "department")
-    private Set<Faculty> faculties;
+    public List<Teacher> getTeachers() {
+        return teachers;
+    }
 
-    public Set<Faculty> getFaculties() {
-        return faculties;
+    public void setFaculties(Faculty faculties) {
+        this.faculty = faculties;
+    }
+
+    public Department() {
+    }
+
+    public Department(Long id, String name){
+        this.id = id;
+        this.name = name;
     }
 }
 

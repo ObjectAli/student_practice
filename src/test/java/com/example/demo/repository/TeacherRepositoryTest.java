@@ -46,8 +46,8 @@ public class TeacherRepositoryTest extends DemoApplicationTests {
         teacherService.delete(new Long(3));
     }
 
-    @Test
-    public void testUpdate(){
-        teacherService.updateTeacher(new Long(2),"test","edit");
-    }
+    //@Test
+    //public void testUpdate(){
+      //  teacherService.updateTeacher(new Long(2),"test","edit");
+    //}
 }
