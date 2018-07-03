@@ -46,8 +46,8 @@ public class StudentRepositoryTest extends DemoApplicationTests {
         studentService.delete(new Long(3));
     }
 
-    @Test
-    public void testUpdate(){
-        studentService.updateStudent(new Long(2),"test","edit");
-    }
+//    @Test
+//    public void testUpdate(){
+//        studentService.updateStudent();
+//    }
 }

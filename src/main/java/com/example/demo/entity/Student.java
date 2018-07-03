@@ -26,8 +26,12 @@ public class Student {
 
     @ManyToOne
     @JoinColumn(name = "specialty_id")
-
     private Specialty specialty;
+
+//    @OneToOne
+//    @JoinColumn(name = "students")
+//
+//    private Journal journal;
 
     public Student() {
     }
@@ -110,4 +114,13 @@ public class Student {
     public void setSpecialty(Specialty specialty) {
         this.specialty = specialty;
     }
+
+//    public Journal getJournal() {
+//        return journal;
+//    }
+//
+//    public void setJournal(Journal journal) {
+//        this.journal = journal;
+//    }
+
 }

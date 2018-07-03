@@ -4,10 +4,11 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity // This tells Hibernate to make a table out of this  class
+@Table(name = "timetable", catalog = "alinorbobaevdb")
 public class Timetable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Long id;
 
     @Column
     private int timestart;
@@ -24,11 +25,11 @@ public class Timetable {
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "timetable")
     private List<Teacher> teachers;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -64,4 +65,13 @@ public class Timetable {
         this.subject = subject;
     }
 
+    public Timetable(){}
+
+    public Timetable(Long id, Integer timestart, Integer  timeend, String auditoryHall, String subject0){
+        this.id = id;
+        this.timestart = timestart;
+        this.timeend = timeend;
+        this.auditoryHall = auditoryHall;
+        this.subject = subject;
+    }
 }

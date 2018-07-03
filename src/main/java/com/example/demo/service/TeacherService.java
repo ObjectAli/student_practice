@@ -16,5 +16,5 @@ public interface TeacherService {
 
     Teacher updateTeacher(Teacher teacher);
 
-    List<Teacher> getAll();
+    List<Teacher> findAll();
 }

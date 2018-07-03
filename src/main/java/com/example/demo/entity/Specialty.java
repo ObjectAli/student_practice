@@ -2,14 +2,13 @@ package com.example.demo.entity;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Set;
 
 @Entity // This tells Hibernate to make a table out of this class
 @Table(name = "specialty", catalog = "alinorbobaevdb")
 public class Specialty {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Long id;
 
     @Column
     private String name;
@@ -17,12 +16,15 @@ public class Specialty {
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "specialty")
     private List<Student> students;
 
+    @ManyToOne
+    @JoinColumn(name = "department_id")
+    private Department department;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -34,17 +36,23 @@ public class Specialty {
         this.name = name;
     }
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "specialty")
-    private Set<Department> users;
-
-    public void setDepartment(Set<Department> users) {
-        this.users = users;
+    public void setDepartments(Department departments) {
+        this.department = departments;
     }
 
-    public Specialty() {
+    public Department getDepartments() {
+        return department;
+    }
+
+    public Specialty(Long id, String name) {
+        this.id = id;
+        this.name = name;
     }
 
     public Specialty(String name) {
         this.name = name;
     }
+
+    public Specialty(){}
+
 }

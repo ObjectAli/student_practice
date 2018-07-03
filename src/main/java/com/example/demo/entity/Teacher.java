@@ -16,27 +16,26 @@ public class Teacher {
     private String lastname;
 
     @Column
-    private String department;
-
-    @Column
     private String post;
 
     @Column
     private String load;
 
     @ManyToOne
-    @JoinColumn(name = "timetable_id")
+    @JoinColumn(name = "department_id")
+    private Department department;
 
+    @ManyToOne
+    @JoinColumn(name = "timetable_id")
     private Timetable timetable;
 
     public Teacher() {
     }
 
-    public Teacher(Long id, String name, String lastname, String department, String post, String load) {
+    public Teacher(Long id, String name, String lastname, String post, String load) {
         this.id = id;
         this.name = name;
         this.lastname = lastname;
-        this.department = department;
         this.post = post;
         this.load = load;
     }
@@ -71,14 +70,6 @@ public class Teacher {
         this.lastname = lastname;
     }
 
-    public String getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(String department) {
-        this.department = department;
-    }
-
     public String getPost() {
         return post;
     }
@@ -99,4 +90,15 @@ public class Teacher {
         return timetable;
     }
 
+    public void setTimetable(Timetable timetable) {
+        this.timetable = timetable;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
 }

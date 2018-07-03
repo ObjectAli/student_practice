@@ -16,6 +16,6 @@ public interface StudentService {
 
     Student updateStudent(Student student);
 
-    List<Student> getAll();
+    List<Student> findAll();
 
 }

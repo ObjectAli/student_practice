@@ -4,9 +4,9 @@ import com.example.demo.entity.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-@Repository
+@RepositoryRestResource(collectionResourceRel = "student", path = "student")
 public interface StudentRepository extends JpaRepository<Student, Long> {
 
     @Query("select s from Student s where s.lastname = :lastname")
