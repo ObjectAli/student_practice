@@ -12,5 +12,5 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
     @Query("select s from Student s where s.lastname = :lastname")
     Student getByLastname(@Param("lastname") String lastname);
 
-    Student getById(Long id);
+    Student getById(@Param("id")Long id);
 }
