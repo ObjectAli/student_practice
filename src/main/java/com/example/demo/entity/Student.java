@@ -1,6 +1,7 @@
 package com.example.demo.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity // This tells Hibernate to make a table out of this class
 @Table(name = "students", catalog = "alinorbobaevdb")
@@ -25,13 +26,11 @@ public class Student {
     private int acperformance; //успеваемость
 
     @ManyToOne
-    @JoinColumn(name = "specialty_id")
+    @JoinColumn(name = "specialty")
     private Specialty specialty;
 
-//    @OneToOne
-//    @JoinColumn(name = "students")
-//
-//    private Journal journal;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "student")
+    private List<Journal> journal;
 
     public Student() {
     }
@@ -114,13 +113,5 @@ public class Student {
     public void setSpecialty(Specialty specialty) {
         this.specialty = specialty;
     }
-
-//    public Journal getJournal() {
-//        return journal;
-//    }
-//
-//    public void setJournal(Journal journal) {
-//        this.journal = journal;
-//    }
 
 }
