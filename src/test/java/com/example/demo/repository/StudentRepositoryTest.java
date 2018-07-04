@@ -25,29 +25,24 @@ public class StudentRepositoryTest extends DemoApplicationTests {
 
     @Test
     public void testSelectByLastName() {
-        Student student = studentRepository.getByLastname("tretiy");
-        Assert.assertEquals("tretiy", student.getLastname());
+        Student student = studentRepository.getByLastname("ttt");
+        Assert.assertEquals("ttt", student.getLastname());
     }
 
     @Test
     public void testSelectById() {
-        Long id = new Long(5);
+        Long id = new Long(61);
         Student student = studentRepository.getById(id);
         Assert.assertEquals(id, student.getId());
     }
 
     @Test
     public void testAdd(){
-        studentService.addStudent(new Student(new Long(45),"test","search"));
+        studentService.addStudent(new Student(new Long(63),"test","search"));
     }
 
     @Test
     public void testDelete(){
         studentService.delete(new Long(3));
     }
-
-//    @Test
-//    public void testUpdate(){
-//        studentService.updateStudent();
-//    }
 }

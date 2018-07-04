@@ -3,6 +3,7 @@ package com.example.demo.controllers;
 import com.example.demo.entity.Student;
 import com.example.demo.repository.SpecialtyRepository;
 import com.example.demo.repository.StudentRepository;
+import com.example.demo.service.StatisticsService;
 import com.example.demo.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
@@ -20,6 +21,9 @@ public class StudentRestController {
 
     @Autowired
     SpecialtyRepository specialtyRepository;
+
+    @Autowired
+    StatisticsService statisticsService;
 
     @Secured({"USER","ADMIN"})
     @GetMapping(path = "/findAll")
@@ -56,5 +60,10 @@ public class StudentRestController {
     @DeleteMapping(path = "/{id}")
     public void delStudent(@PathVariable("id") Long id) {
         studentService.delete(id);
+    }
+
+    @GetMapping(path = "/avr/{id}")
+    public double averageGrade(@PathVariable("id") Long id){
+        return statisticsService.averageGrade(id);
     }
 }

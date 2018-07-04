@@ -114,4 +114,7 @@ public class Student {
         this.specialty = specialty;
     }
 
+    public List<Journal> getJournal() {
+        return journal;
+    }
 }

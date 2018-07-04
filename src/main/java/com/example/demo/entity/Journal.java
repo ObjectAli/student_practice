@@ -34,6 +34,10 @@ public class Journal {
         this.student = student;
     }
 
+    public List<Record> getRecords() {
+        return records;
+    }
+
     public Journal(){}
 
     public Journal(Long id, Student student){
