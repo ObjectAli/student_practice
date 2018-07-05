@@ -5,6 +5,7 @@ import com.example.demo.repository.SpecialtyRepository;
 import com.example.demo.repository.StudentRepository;
 import com.example.demo.service.StatisticsService;
 import com.example.demo.service.StudentService;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +26,7 @@ public class StudentRestController {
     @Autowired
     StatisticsService statisticsService;
 
+    @JsonIgnore
     @Secured({"USER","ADMIN"})
     @GetMapping(path = "/findAll")
     public Iterable<Student> getAllStudents() {
@@ -62,8 +64,28 @@ public class StudentRestController {
         studentService.delete(id);
     }
 
-    @GetMapping(path = "/avr/{id}")
+    @JsonIgnore
+    @GetMapping(path = "/avrG/{id}")
     public double averageGrade(@PathVariable("id") Long id){
         return statisticsService.averageGrade(id);
     }
+
+    @JsonIgnore
+    @GetMapping(path = "/avrP/{id}")
+    public double averagePresence(@PathVariable("id") Long id) {
+        return statisticsService.averagePresence(id);
+    }
+
+    @PutMapping(path = "/upName/{id},{name}")
+    public Student upName(@PathVariable("id") Long id,@PathVariable("name") String newName, @RequestBody Student student ){
+        student.setId(id);
+        return studentService.upName(newName, student);
+    }
+
+    @PutMapping(path = "/upLastname/{id},{lastname}")
+    public Student upLastname(@PathVariable("id") Long id,@PathVariable("lastname") String lastname, @RequestBody Student student ){
+        student.setId(id);
+        return studentService.upLastname(lastname, student);
+    }
+
 }

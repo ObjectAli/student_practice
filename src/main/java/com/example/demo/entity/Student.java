@@ -1,5 +1,7 @@
 package com.example.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -20,10 +22,10 @@ public class Student {
     private int course;
 
     @Column
-    private int attendance; //посещаемость
+    private double attendance; //посещаемость
 
     @Column
-    private int acperformance; //успеваемость
+    private double acperformance; //успеваемость
 
     @ManyToOne
     @JoinColumn(name = "specialty")
@@ -35,7 +37,7 @@ public class Student {
     public Student() {
     }
 
-    public Student(Long id, String name, String lastname, int course, int attendance, int acperformance, Specialty specialty) {
+    public Student(Long id, String name, String lastname, int course, double attendance, double acperformance, Specialty specialty) {
         this.id = id;
         this.name = name;
         this.lastname = lastname;
@@ -90,19 +92,19 @@ public class Student {
         this.course = course;
     }
 
-    public int getAttendance() {
+    public double getAttendance() {
         return attendance;
     }
 
-    public void setAttendance(int attendance) {
+    public void setAttendance(double attendance) {
         this.attendance = attendance;
     }
 
-    public int getAcperformance() {
+    public double getAcperformance() {
         return acperformance;
     }
 
-    public void setAcperformance(int acperformance) {
+    public void setAcperformance(double acperformance) {
         this.acperformance = acperformance;
     }
 
@@ -114,6 +116,7 @@ public class Student {
         this.specialty = specialty;
     }
 
+    @JsonIgnore
     public List<Journal> getJournal() {
         return journal;
     }

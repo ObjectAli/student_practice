@@ -1,5 +1,7 @@
 package com.example.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -34,6 +36,7 @@ public class Journal {
         this.student = student;
     }
 
+    @JsonIgnore
     public List<Record> getRecords() {
         return records;
     }
