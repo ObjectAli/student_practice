@@ -18,4 +18,8 @@ public interface StudentService {
 
     List<Student> findAll();
 
+    Student upName(String newName, Student student);
+
+    Student upLastname(String newLastname, Student student);
+
 }

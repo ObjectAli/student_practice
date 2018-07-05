@@ -52,4 +52,24 @@ public class StudentServiceImpl implements StudentService {
         return studentRepository.findAll();
     }
 
+    @Override
+    public Student upName(String newName, Student student){
+        if(!studentRepository.exists(Example.of(student))){
+            student.setName(newName);
+            return studentRepository.save(student);
+        }else {
+            throw new RuntimeException("Invalid value!");
+        }
+    }
+
+    @Override
+    public Student upLastname(String newLastname, Student student){
+        if(!studentRepository.exists(Example.of(student))){
+            student.setName(newLastname);
+            return studentRepository.save(student);
+        }else {
+            throw new RuntimeException("Invalid value!");
+        }
+    }
+
 }
